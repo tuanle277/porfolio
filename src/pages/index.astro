@@ -1,16 +1,211 @@
 ---
+// FILE: src/pages/index.astro
+// Enhanced homepage importing data from portfolioData.js, adding Experience section above Projects.
 
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+// Import data from the data file
+import { personalInfo, projects, blogPosts, ideas, experience } from '../porfolioData.js'; // Added experience import
+
+// Split name for potential letter animation
+const nameParts = personalInfo.name.split(' ');
+const firstName = nameParts[0];
+const lastName = nameParts.slice(1).join(' ');
 ---
+{/* Updated Layout props to use imported data */}
+<Layout title={`${personalInfo.name} - Portfolio`} description={`Welcome to the professional portfolio of ${personalInfo.name}, ${personalInfo.title}.`}>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <section id="home" class="relative min-h-screen flex items-center text-center md:text-left overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-sky-100 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900/50 animated-gradient-bg">
+         <div class="absolute top-10 left-10 w-32 h-32 bg-indigo-200 dark:bg-indigo-800/50 rounded-full opacity-30 animate-pulse"></div>
+         <div class="absolute bottom-10 right-10 w-48 h-48 bg-sky-200 dark:bg-sky-800/50 rounded-lg opacity-30 animate-spin-slow"></div>
+        <!-- Animated background elements -->
+        <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-purple-200 dark:bg-purple-800/30 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-30 animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-56 h-56 bg-blue-200 dark:bg-blue-800/30 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-30 animate-float-delay"></div>
+        <div class="absolute top-2/3 right-1/4 w-40 h-40 bg-indigo-200 dark:bg-indigo-800/30 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-30 animate-pulse"></div>
+        
+        <!-- Decorative tech icons floating in background -->
+        <div class="absolute top-20 right-20 opacity-10 dark:opacity-5 animate-spin-slow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="currentColor" class="text-indigo-600 dark:text-indigo-400">
+            <path d="M12 9.861a2.139 2.139 0 100 4.278 2.139 2.139 0 100-4.278zm-5.992 6.394l-.472-.12C2.018 15.246 0 12.737 0 11.996c0-.74 2.018-3.25 5.536-4.139l.472-.119.133.468a23.53 23.53 0 001.363 3.578l.101.213-.101.213a23.307 23.307 0 00-1.363 3.578l-.133.467zM5.317 8.95c-2.674.751-4.315 2.528-4.315 3.046 0 .518 1.641 2.296 4.315 3.046.247-.845.674-1.732 1.262-2.695-.588-.963-1.015-1.85-1.262-2.397zm14.675 6.393l-.133-.469a23.357 23.357 0 00-1.364-3.577l-.101-.213.101-.213a23.42 23.42 0 001.364-3.578l.133-.468.473.119c3.517.889 5.535 3.399 5.535 4.14s-2.018 3.25-5.535 4.139l-.473.12zm-.491-4.259c.586.963 1.015 1.85 1.261 2.696 2.675-.752 4.315-2.529 4.315-3.047 0-.518-1.641-2.296-4.315-3.046-.247.845-.675 1.732-1.261 2.696zM8.684 11.25l-.521-1.089h.217c.243 0 1.453.13 1.453.847 0 .355-.313.652-.736.652a.47.47 0 01-.413-.21z"></path>
+          </svg>
+        </div>
+        
+        <div class="absolute bottom-40 left-20 opacity-10 dark:opacity-5 animate-float">
+          <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="currentColor" class="text-blue-600 dark:text-blue-400">
+            <path d="M11.998 0C5.366 0 0 5.367 0 12a12 12 0 1023.995 0c0-6.633-5.367-12-11.997-12zM6.37 14.575c.392.523.916.742 1.657.742.35 0 .7-.067 1.05-.2.35-.134.658-.334.966-.6a.97.97 0 01.575-.2c.2 0 .367.066.5.2.134.133.2.283.2.45 0 .1-.016.184-.05.25a.767.767 0 01-.183.242c-.434.433-.967.783-1.6 1.05-.633.267-1.283.4-1.95.4-.833 0-1.575-.183-2.225-.55a3.969 3.969 0 01-1.575-1.475c-.383-.617-.575-1.292-.575-2.025 0-.767.2-1.45.6-2.05.4-.6.925-1.075 1.575-1.425.65-.35 1.367-.525 2.15-.525.7 0 1.325.158 1.875.475.55.317.975.742 1.275 1.275.3.533.45 1.1.45 1.7 0 .4-.092.7-.275.9-.183.2-.467.3-.85.3H6.17c.067.833.334 1.466.8 1.9zm10.655.425c.367.35.55.767.55 1.25 0 .5-.183.917-.55 1.25-.367.333-.883.5-1.55.5-.667 0-1.184-.167-1.55-.5-.368-.333-.55-.75-.55-1.25 0-.483.182-.9.55-1.25.366-.35.883-.525 1.55-.525.667 0 1.183.175 1.55.525zm-.5-3.5c-.267.267-.633.4-1.1.4-.467 0-.834-.133-1.1-.4-.267-.267-.4-.633-.4-1.1 0-.467.133-.833.4-1.1.266-.267.633-.4 1.1-.4.467 0 .833.133 1.1.4.266.267.4.633.4 1.1 0 .467-.134.833-.4 1.1zm-7.025-4.725c.233.2.35.45.35.75 0 .3-.117.55-.35.75-.233.2-.55.3-.95.3-.4 0-.733-.1-.95-.3-.233-.2-.35-.45-.35-.75 0-.3.117-.55.35-.75.217-.2.55-.3.95-.3.4 0 .717.1.95.3z"></path>
+          </svg>
+        </div>
+        
+        <!-- Particle effect container -->
+        <div id="particles-js" class="absolute inset-0 z-0 opacity-30"></div>
+        
+        <!-- Animated gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-indigo-500/10 dark:from-transparent dark:via-indigo-900/10 dark:to-purple-800/20 animate-gradient-shift"></div>
+        
+        <div class="container mx-auto px-4 z-10 ml-16">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-gray-900 dark:text-white animate-fade-in" style="animation-delay: 0.2s;">
+                Hi, I'm{' '}
+                <span class="text-indigo-600 dark:text-indigo-400">
+                    {firstName.split('').map((letter, index) => (
+                        <span class="inline-block animate-letter-reveal" style={`animation-delay: ${0.5 + index * 0.05}s`}>{letter}</span>
+                    ))}
+                    &nbsp;
+                    {lastName.split('').map((letter, index) => (
+                         <span class="inline-block animate-letter-reveal" style={`animation-delay: ${0.5 + (firstName.length + index) * 0.05}s`}>{letter}</span>
+                    ))}
+                </span>
+            </h1>
+            {/* Use imported title */}
+            <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-400 mb-8 animate-fade-in" style="animation-delay: 1.0s;">
+                {personalInfo.title}
+            </p>
+            <div class="animate-fade-in" style="animation-delay: 1.3s;">
+                <a href="#projects" class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out">
+                    View My Work
+                </a>
+                 <a href="#contact" class="ml-4 inline-block border-2 border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <Section id="about" title="About Me" className="bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-3xl mx-auto text-center md:text-left grid md:grid-cols-3 gap-8 items-center">
+             <div class="md:col-span-1 flex justify-center animate-on-scroll" data-animation="fade-in-scale">
+                 <img
+                    src="assets/Tun_le.jpg"
+                    alt={personalInfo.name} /* Use imported name */
+                    class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-xl border-4 border-white dark:border-gray-700"
+                    onerror="this.onerror=null; this.src='https://placehold.co/200x200/e0e7ff/4f46e5?text=TL';"
+                 />
+             </div>
+             <div class="md:col-span-2 animate-on-scroll" data-animation="fade-in-right" style="animation-delay: 0.2s;">
+                {/* Content can be further refined using imported data if needed */}
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                    Hello! I'm {personalInfo.name}, currently pursuing a BS/MS in Computer Science at Washington University in St. Louis (Expected May 2026/2027), following a BA from DePauw University. I have a strong foundation in CS, Mathematics, and Pre-Engineering.
+                </p>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                    My experience spans Machine Learning Engineering (Vanderbilt, Hy Son Lab, Dr. Charoenphon), Data Science Research (DePauw), and iOS Development (IMT Solutions). I'm proficient in Python, Java, C++, Swift, JavaScript, and various ML/AI frameworks (TensorFlow, PyTorch, Keras, Hugging Face), Data Engineering tools (Spark, Kafka), and Full-Stack technologies (React, Angular, Node.js, Django, Docker, Kubernetes).
+                </p>
+                 <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    I enjoy tackling complex problems, building robust applications, and exploring cutting-edge research in areas like GNNs and NLP. I'm also involved in the Robotics Club and have experience as a Teaching Assistant.
+                </p>
+                <div class="mt-6">
+                     {/* Use imported resume URL */}
+                     <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-block transition-transform hover:translate-x-1">
+                        View My Resume &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </Section>
+
+    <Section id="experience" title="Experience" className="bg-white dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto">
+            {/* Two-column Experience Layout */}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left Column */}
+                <div class="relative border-l-2 border-indigo-200 dark:border-indigo-800 pl-6 space-y-10">
+                    {experience.slice(0, Math.ceil(experience.length/2)).map((job, index) => (
+                        <div class="relative animate-on-scroll" data-animation="fade-in-left" style={`animation-delay: ${index * 0.15}s;`} key={job.id}>
+                            {/* Timeline Dot */}
+                            <div class="absolute -left-[calc(0.75rem+1px)] top-1 w-6 h-6 bg-white dark:bg-gray-900 border-2 border-indigo-500 rounded-full"></div>
+
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{job.role}</h3>
+                                <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-1">{job.company}</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{job.duration}</p>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">{job.description}</p>
+                                {job.tags && job.tags.length > 0 && (
+                                    <div class="flex flex-wrap gap-2">
+                                        {job.tags.map(tag => (
+                                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                
+                {/* Right Column */}
+                <div class="relative border-l-2 border-indigo-200 dark:border-indigo-800 pl-6 space-y-10">
+                    {experience.slice(Math.ceil(experience.length/2)).map((job, index) => (
+                        <div class="relative animate-on-scroll" data-animation="fade-in-left" style={`animation-delay: ${(index + Math.ceil(experience.length/2)) * 0.15}s;`} key={job.id}>
+                            {/* Timeline Dot */}
+                            <div class="absolute -left-[calc(0.75rem+1px)] top-1 w-6 h-6 bg-white dark:bg-gray-900 border-2 border-indigo-500 rounded-full"></div>
+
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{job.role}</h3>
+                                <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-1">{job.company}</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{job.duration}</p>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">{job.description}</p>
+                                {job.tags && job.tags.length > 0 && (
+                                    <div class="flex flex-wrap gap-2">
+                                        {job.tags.map(tag => (
+                                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </Section>
+
+    <Section id="projects" title="My Projects" className="bg-gray-50 dark:bg-gray-800/50"> {/* Adjusted background */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {/* Iterate over imported projects */}
+            {projects.map((project, index) => (
+                <div class="animate-on-scroll" data-animation="fade-in-up" style={`animation-delay: ${index * 0.1}s;`} key={project.id}>
+                    <ProjectCard {...project} />
+                </div>
+            ))}
+        </div>
+        <p class="text-center mt-12 text-gray-600 dark:text-gray-400 animate-on-scroll" data-animation="fade-in">
+            More projects available on my <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" class="font-semibold hover:underline">GitHub</a>.
+        </p>
+    </Section>
+
+
+    <Section id="contact" title="Get In Touch" className="bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-900/30 dark:to-gray-900">
+        <div class="max-w-xl mx-auto text-center">
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 animate-on-scroll" data-animation="fade-in">
+                I'm currently open to new opportunities, research collaborations, and interesting projects. Feel free to reach out!
+            </p>
+            <a
+                href={`mailto:${personalInfo.email}`} /* Use imported email */
+                class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out animate-on-scroll"
+                data-animation="fade-in-scale"
+                style="animation-delay: 0.2s;"
+            >
+                Send Me an Email
+            </a>
+            <div class="mt-8 text-gray-600 dark:text-gray-400 animate-on-scroll" data-animation="fade-in" style="animation-delay: 0.4s;">
+                <p>You can also find me on:</p>
+                <div class="mt-4 flex justify-center space-x-6">
+                     {/* Use imported URLs */}
+                     {personalInfo.linkedinUrl && personalInfo.linkedinUrl !== "[Your LinkedIn Link]" && (
+                        <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                        </a>
+                     )}
+                     {personalInfo.githubUrl && (
+                        <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 transform hover:scale-110" aria-label="GitHub">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" clip-rule="evenodd"/></svg>
+                        </a>
+                     )}
+                </div>
+            </div>
+        </div>
+    </Section>
+
+</Layout>

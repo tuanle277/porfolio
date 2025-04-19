@@ -1,0 +1,37 @@
+---
+// FILE: src/components/Header.astro
+// A reusable header component for the site navigation.
+
+// Define navigation links
+const navLinks = [
+    { name: 'Home', href: '/#home' },
+    { name: 'About', href: '/#about' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Blogs', href: '/#blogs'},
+    { name: 'Idea Board', href: '/#ideas'},
+    { name: 'Contact', href: '/#contact' },
+];
+---
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+    <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="/#home" class="text-xl font-bold text-indigo-600 dark:text-indigo-400 hover:opacity-80 transition-opacity">
+            Kevin Le
+        </a>
+        <ul class="hidden md:flex space-x-6">
+            {navLinks.map(link => (
+                <li>
+                    <a href={link.href} class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                        {link.name}
+                    </a>
+                </li>
+            ))}
+        </ul>
+        <!-- Basic Mobile Menu Toggle (Needs JS for full functionality) -->
+        <button class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+        <!-- Add mobile menu dropdown here if needed -->
+    </nav>
+</header>

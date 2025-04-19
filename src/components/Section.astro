@@ -1,0 +1,20 @@
+---
+// FILE: src/components/Section.astro
+// A reusable component to wrap content sections with consistent padding and an ID.
+
+interface Props {
+    id: string;
+    title: string;
+    className?: string; // Allow passing additional classes
+}
+
+const { id, title, className = '' } = Astro.props;
+---
+<section id={id} class={`py-16 md:py-24 ${className}`}>
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-on-scroll">
+            {title}
+        </h2>
+        <slot /> <!-- Section content goes here -->
+    </div>
+</section>

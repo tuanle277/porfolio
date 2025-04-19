@@ -1,0 +1,152 @@
+/* FILE: src/styles/global.css */
+/* Enhanced global styles with more animations */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define animation keyframes */
+@layer base {
+  @keyframes animated-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes letter-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.8) rotate(-5deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Apply base styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300;
+    font-family: "Inter", sans-serif;
+  }
+
+  /* Base style for elements that will be animated on scroll */
+  .animate-on-scroll {
+    opacity: 0; /* Start hidden */
+    /* Transition properties are handled by animation definitions */
+  }
+
+  /* Add animation classes to be triggered by JS */
+  .animated.anim-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  .animated.anim-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  .animated.anim-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+  .animated.anim-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+  .animated.anim-fade-in-scale {
+    animation: fadeInScale 0.8s ease-out forwards;
+  }
+
+  /* Initial state for letter reveal animation */
+  .animate-letter-reveal {
+    opacity: 0;
+    animation: letter-reveal 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  }
+
+  /* Initial state for simple fade-in (used in Hero) */
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  /* Basic styling for links */
+  a {
+    @apply text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors;
+  }
+
+  /* Animated gradient background */
+  .animated-gradient-bg {
+    background-size: 200% 200%;
+    animation: animated-gradient 15s ease infinite;
+  }
+
+  /* Slow spin animation */
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+}
+
+/* Custom component layer styles (optional) */
+@layer components {
+  /* Example: Add custom component styles here if needed */
+}

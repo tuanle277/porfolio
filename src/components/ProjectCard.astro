@@ -1,0 +1,63 @@
+---
+// FILE: src/components/ProjectCard.astro
+// Enhanced reusable card component for projects with better hover effects.
+
+interface Props {
+    title: string;
+    description: string;
+    imageUrl?: string; // Optional image URL
+    imageAlt?: string; // Alt text for image
+    tags?: string[];   // Tech tags (e.g., ['React', 'Node.js'])
+    liveUrl?: string;  // Link to live demo
+    repoUrl?: string;  // Link to code repository
+}
+
+const {
+    title,
+    description,
+    imageUrl = 'https://placehold.co/600x400/e2e8f0/cbd5e0?text=Project+Image', // Placeholder image
+    imageAlt = 'Project screenshot',
+    tags = [],
+    liveUrl,
+    repoUrl
+} = Astro.props;
+---
+{/* Added group class for group-hover effects and enhanced transitions/shadows */}
+<div class="group bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl dark:hover:shadow-indigo-900/40 overflow-hidden transition-all duration-300 ease-out transform hover:-translate-y-2 border border-transparent hover:border-indigo-300 dark:hover:border-indigo-700 h-full flex flex-col">
+    <div class="overflow-hidden h-48"> {/* Fixed height container for image */}
+        <img
+            src={imageUrl}
+            alt={imageAlt}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/cbd5e0?text=Image+Error';"
+            loading="lazy" {/* Added lazy loading for images */}
+        />
+    </div>
+    <div class="p-6 flex-grow flex flex-col"> {/* Using flex-grow to fill available space */}
+        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">{title}</h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow">{description}</p>
+
+        {tags.length > 0 && (
+            <div class="mb-4 flex flex-wrap gap-2">
+                {tags.map(tag => (
+                    <span class="bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 text-xs font-medium px-2.5 py-0.5 rounded-full"> {/* Changed to rounded-full */}
+                        {tag}
+                    </span>
+                ))}
+            </div>
+        )}
+
+        <div class="flex justify-end space-x-3 mt-auto"> {/* Changed to mt-auto to push to bottom */}
+            {liveUrl && (
+                <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105 shadow hover:shadow-md">
+                    Live Demo
+                </a>
+            )}
+            {repoUrl && (
+                <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105 shadow hover:shadow-md">
+                    Code
+                </a>
+            )}
+        </div>
+    </div>
+</div>
