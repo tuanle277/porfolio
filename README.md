@@ -1,47 +1,41 @@
-# Astro Starter Kit: Minimal
+# Personal Portfolio ([Your Name])
 
-```sh
-pnpm create astro@latest -- --template minimal
+This is the source code for my personal portfolio website, built with Astro and Tailwind CSS.
+
+## Prerequisites
+
+- Node.js (LTS recommended)
+- pnpm (`npm install -g pnpm`)
+
+## Development
+
+1.  **Install dependencies:**
+    ```bash
+    pnpm install
+    ```
+    *(Run this command inside the `my-portfolio` directory after using the creation script)*
+
+2.  **Start the development server:**
+    ```bash
+    pnpm dev
+    ```
+    The site will be available at `http://localhost:4321` (or another port if 4321 is busy).
+
+## Build
+
+To create a production-ready build:
+
+```bash
+pnpm build
 ```
+The output will be in the `dist/` directory.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Customization
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+-   Update personal information (`[Your Name]`, `[Your Role]`, etc.) primarily in `src/pages/index.astro`, `src/components/Header.astro`, and `src/components/Footer.astro`.
+-   Replace placeholder project data in `src/pages/index.astro`.
+-   Add your actual resume PDF to the `public/` folder and update the link in `src/pages/index.astro`.
+-   Customize styling further in `tailwind.config.mjs` and `src/styles/global.css`.
+-   Replace `public/favicon.svg` with your own icon.
+-   Update links in `src/components/Footer.astro` and `src/pages/index.astro`.
+# porfolio
