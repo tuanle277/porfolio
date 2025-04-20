@@ -7,12 +7,11 @@ export const personalInfo = {
   location: "St. Louis, MO",
   email: "mtuan.le2024@gmail.com",
   githubUrl: "https://github.com/tuanle277",
-  linkedinUrl: "https://www.linkedin.com/in/tuanle277/", // Replace with your actual LinkedIn URL
-  resumeUrl: "/KevinLe-Resume-2025.pdf", // Assumes resume is in public/
+  linkedinUrl: "https://www.linkedin.com/in/tuanle277/",
+  resumeUrl: "/KevinLe-Resume-2025.pdf",
 };
 
 export const projects = [
-  // Existing projects with potentially more detail/tags
   {
     id: "proj-meet-middle",
     title: "Meet in the Middle (Independent)",
@@ -31,7 +30,7 @@ export const projects = [
     liveUrl: "#",
     repoUrl: "#",
     imageUrl: "https://placehold.co/600x400/a3bffa/ffffff?text=Meet+In+Middle",
-    date: "Jan 2025 – Present", // Added date from Resume
+    date: "Jan 2025 – Present",
   },
   {
     id: "proj-board",
@@ -48,9 +47,9 @@ export const projects = [
       "Collaboration",
     ],
     liveUrl: "#",
-    repoUrl: "https://github.com/tuanle277", // Placeholder - confirm repo
+    repoUrl: "https://github.com/tuanle277",
     imageUrl: "https://placehold.co/600x400/facc15/000000?text=Project+Board",
-    date: "Sep 2024 – Present", // Added date from Resume
+    date: "Sep 2024 – Present",
   },
   {
     id: "proj-hypergraph",
@@ -195,7 +194,7 @@ export const experience = [
     company: "Hy Son Lab (WashU)",
     duration: "Mar 2024 – Present",
     description:
-      "Spearheaded research in augmentation-free contrastive learning for GNNs. Engineered pre-training modules (PyG, DGL) improving link prediction by 10%. Designed web scraping solutions (BeautifulSoup4, Scrapy, Selenium, Puppeteer). Innovated feature augmentation (K-means, BERT). Refactored EDA code (Jupyter, Pandas, NetworkX). Tuned hyperparameters (Optuna), reducing training time by 15%.",
+      "Spearheaded research in augmentation-free contrastive learning for GNNs. Engineered pre-training modules (PyG, DGL) improving link prediction by 10%. Designed web scraping solutions (BeautifulSoup4, Scrapy, Selenium, Puppeteer).",
     tags: [
       "GNN",
       "Contrastive Learning",
@@ -214,7 +213,7 @@ export const experience = [
     company: "Dr. Sutthirut Charoenphon (DePauw)",
     duration: "Dec 2023 – Mar 2024",
     description:
-      "Architected sequential DNN for real-time recommendation (90% accuracy) using TF/Keras/NumPy/Pandas. Developed data pipeline (Python, Polars, Airflow, Kafka). Deployed model via web platform (Angular, Docker, Flask, REST API). Evaluated using TensorBoard.",
+      "Architected sequential DNN for real-time recommendation (90% accuracy) using TF/Keras/NumPy/Pandas. Developed data pipeline (Python, Polars, Airflow, Kafka).",
     tags: [
       "Recommendation Systems",
       "Deep Learning",
@@ -350,33 +349,10 @@ export const experience = [
   },
 ];
 // Add blog posts data (example structure)
-export const blogPosts = [
-  {
-    id: "blog-post-1",
-    title: "My First Blog Post",
-    date: "2025-04-19",
-    excerpt: "A quick introduction to my new blog section...",
-    url: "#", // Link to full post (or use Astro's content collections)
-  },
-  // Add more posts
-];
+export const blogPosts = [];
 
 // Add idea board data (example structure)
-export const ideas = [
-  {
-    id: "idea-1",
-    title: "Portfolio Enhancement Ideas",
-    description: "Tracking ideas for improving this portfolio site.",
-    status: "In Progress",
-  },
-  {
-    id: "idea-2",
-    title: "Next Side Project Concept",
-    description: "Brainstorming a new project involving [mention tech/domain].",
-    status: "Planning",
-  },
-  // Add more ideas
-];
+export const ideas = [];
 
 export const publications = [
   {

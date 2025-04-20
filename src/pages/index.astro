@@ -1,19 +1,18 @@
 ---
 // FILE: src/pages/index.astro
-// Enhanced homepage importing data from portfolioData.js, adding Experience section above Projects.
 
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 // Import data from the data file
-import { personalInfo, projects, blogPosts, ideas, experience } from '../porfolioData.js'; // Added experience import
+import { personalInfo, projects, blogPosts, ideas, experience } from '../data/porfolioData.js';
 
 // Split name for potential letter animation
 const nameParts = personalInfo.name.split(' ');
 const firstName = nameParts[0];
 const lastName = nameParts.slice(1).join(' ');
 ---
-{/* Updated Layout props to use imported data */}
+
 <Layout title={`${personalInfo.name} - Portfolio`} description={`Welcome to the professional portfolio of ${personalInfo.name}, ${personalInfo.title}.`}>
 
     <section id="home" class="relative min-h-screen flex items-center text-center md:text-left overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-sky-100 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900/50 animated-gradient-bg">
@@ -56,7 +55,6 @@ const lastName = nameParts.slice(1).join(' ');
                     ))}
                 </span>
             </h1>
-            {/* Use imported title */}
             <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-400 mb-8 animate-fade-in" style="animation-delay: 1.0s;">
                 {personalInfo.title}
             </p>
@@ -75,14 +73,13 @@ const lastName = nameParts.slice(1).join(' ');
         <div class="max-w-3xl mx-auto text-center md:text-left grid md:grid-cols-3 gap-8 items-center">
              <div class="md:col-span-1 flex justify-center animate-on-scroll" data-animation="fade-in-scale">
                  <img
-                    src="assets/Tun_le.jpg"
-                    alt={personalInfo.name} /* Use imported name */
+                    src="assets/Tun_Le.jpg"
+                    alt={personalInfo.name}
                     class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-xl border-4 border-white dark:border-gray-700"
                     onerror="this.onerror=null; this.src='https://placehold.co/200x200/e0e7ff/4f46e5?text=TL';"
                  />
              </div>
              <div class="md:col-span-2 animate-on-scroll" data-animation="fade-in-right" style="animation-delay: 0.2s;">
-                {/* Content can be further refined using imported data if needed */}
                 <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                     Hello! I'm {personalInfo.name}, currently pursuing a BS/MS in Computer Science at Washington University in St. Louis (Expected May 2026/2027), following a BA from DePauw University. I have a strong foundation in CS, Mathematics, and Pre-Engineering.
                 </p>
@@ -93,7 +90,6 @@ const lastName = nameParts.slice(1).join(' ');
                     I enjoy tackling complex problems, building robust applications, and exploring cutting-edge research in areas like GNNs and NLP. I'm also involved in the Robotics Club and have experience as a Teaching Assistant.
                 </p>
                 <div class="mt-6">
-                     {/* Use imported resume URL */}
                      <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-block transition-transform hover:translate-x-1">
                         View My Resume &rarr;
                     </a>
@@ -101,20 +97,16 @@ const lastName = nameParts.slice(1).join(' ');
             </div>
         </div>
     </Section>
-
     <Section id="experience" title="Experience" className="bg-white dark:bg-gray-900">
         <div class="max-w-5xl mx-auto">
-            {/* Two-column Experience Layout */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Left Column */}
                 <div class="relative border-l-2 border-indigo-200 dark:border-indigo-800 pl-6 space-y-10">
                     {experience.slice(0, Math.ceil(experience.length/2)).map((job, index) => (
                         <div class="relative animate-on-scroll" data-animation="fade-in-left" style={`animation-delay: ${index * 0.15}s;`} key={job.id}>
-                            {/* Timeline Dot */}
                             <div class="absolute -left-[calc(0.75rem+1px)] top-1 w-6 h-6 bg-white dark:bg-gray-900 border-2 border-indigo-500 rounded-full"></div>
 
                             <div class="ml-4">
-                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{job.role}</h3>
+                                <h3 class="text-xl font-semibold text-white-900 dark:text-white">{job.role}</h3>
                                 <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-1">{job.company}</p>
                                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{job.duration}</p>
                                 <p class="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">{job.description}</p>
@@ -132,11 +124,9 @@ const lastName = nameParts.slice(1).join(' ');
                     ))}
                 </div>
                 
-                {/* Right Column */}
                 <div class="relative border-l-2 border-indigo-200 dark:border-indigo-800 pl-6 space-y-10">
                     {experience.slice(Math.ceil(experience.length/2)).map((job, index) => (
                         <div class="relative animate-on-scroll" data-animation="fade-in-left" style={`animation-delay: ${(index + Math.ceil(experience.length/2)) * 0.15}s;`} key={job.id}>
-                            {/* Timeline Dot */}
                             <div class="absolute -left-[calc(0.75rem+1px)] top-1 w-6 h-6 bg-white dark:bg-gray-900 border-2 border-indigo-500 rounded-full"></div>
 
                             <div class="ml-4">
@@ -161,9 +151,8 @@ const lastName = nameParts.slice(1).join(' ');
         </div>
     </Section>
 
-    <Section id="projects" title="My Projects" className="bg-gray-50 dark:bg-gray-800/50"> {/* Adjusted background */}
+    <Section id="projects" title="My Projects" className="bg-gray-50 dark:bg-gray-800/50">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {/* Iterate over imported projects */}
             {projects.map((project, index) => (
                 <div class="animate-on-scroll" data-animation="fade-in-up" style={`animation-delay: ${index * 0.1}s;`} key={project.id}>
                     <ProjectCard {...project} />
@@ -182,7 +171,7 @@ const lastName = nameParts.slice(1).join(' ');
                 I'm currently open to new opportunities, research collaborations, and interesting projects. Feel free to reach out!
             </p>
             <a
-                href={`mailto:${personalInfo.email}`} /* Use imported email */
+                href={`mailto:${personalInfo.email}`}
                 class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out animate-on-scroll"
                 data-animation="fade-in-scale"
                 style="animation-delay: 0.2s;"
@@ -192,7 +181,6 @@ const lastName = nameParts.slice(1).join(' ');
             <div class="mt-8 text-gray-600 dark:text-gray-400 animate-on-scroll" data-animation="fade-in" style="animation-delay: 0.4s;">
                 <p>You can also find me on:</p>
                 <div class="mt-4 flex justify-center space-x-6">
-                     {/* Use imported URLs */}
                      {personalInfo.linkedinUrl && personalInfo.linkedinUrl !== "[Your LinkedIn Link]" && (
                         <a href={personalInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>

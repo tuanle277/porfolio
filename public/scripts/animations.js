@@ -1,8 +1,13 @@
 // FILE: public/scripts/animations.js
 // Enhanced JavaScript for scroll-triggered animations using Intersection Observer.
 // Supports different animation types via data-animation attribute.
+// Added a console log for debugging.
 
 document.addEventListener("DOMContentLoaded", () => {
+  // --- DEBUG LOG ---
+  console.log("Animations script running!");
+  // --- END DEBUG LOG ---
+
   // Select all elements that should be animated on scroll
   const animatedElements = document.querySelectorAll(".animate-on-scroll");
 
