@@ -68,11 +68,23 @@ const lastName = nameParts.slice(1).join(' ');
             </div>
         </div>
     </section>
-
     <Section id="about" title="About Me" className="bg-gray-100 dark:bg-gray-800">
+        <div class="text-center mb-12 animate-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                About me
+            </h2>
+            <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+        </div>
         <div class="max-w-3xl mx-auto text-center md:text-left grid md:grid-cols-3 gap-8 items-center">
-
-             <div class="md:col-span-2 animate-on-scroll" data-animation="fade-in-right" style="animation-delay: 0.2s;">
+             <div class="md:col-span-1 flex justify-center md:justify-end animate-fade-in-scale">
+                 <img
+                    src="/images/Tun_Le.jpg"
+                    alt={personalInfo.name}
+                    class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-xl border-4 border-white dark:border-gray-700"
+                    onerror="this.onerror=null; this.src='https://placehold.co/200x200/e0e7ff/4f46e5?text=TL';"
+                 />
+             </div>
+             <div class="md:col-span-2 animate-fade-in-right">
                 <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                     Hello! I'm {personalInfo.name}, currently pursuing a BS/MS in Computer Science at Washington University in St. Louis (Expected May 2026/2027), following a BA from DePauw University. I have a strong foundation in CS, Mathematics, and Pre-Engineering.
                 </p>
@@ -90,12 +102,19 @@ const lastName = nameParts.slice(1).join(' ');
             </div>
         </div>
     </Section>
+
     <Section id="experience" title="Experience" className="bg-white dark:bg-gray-900">
+        <div class="text-center mb-12 animate-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Experience
+            </h2>
+            <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+        </div>
         <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="relative border-l-2 border-indigo-200 dark:border-indigo-800 pl-6 space-y-10">
                     {experience.slice(0, Math.ceil(experience.length/2)).map((job, index) => (
-                        <div class="relative animate-on-scroll" data-animation="fade-in-left" style={`animation-delay: ${index * 0.15}s;`} key={job.id}>
+                        <div class="relative animate-fade-in-left" style={`animation-delay: ${index * 0.15}s;`} key={job.id}>
                             <div class="absolute -left-[calc(0.75rem+1px)] top-1 w-6 h-6 bg-white dark:bg-gray-900 border-2 border-indigo-500 rounded-full"></div>
 
                             <div class="ml-4">
@@ -119,7 +138,7 @@ const lastName = nameParts.slice(1).join(' ');
                 
                 <div class="relative border-l-2 border-indigo-200 dark:border-indigo-800 pl-6 space-y-10">
                     {experience.slice(Math.ceil(experience.length/2)).map((job, index) => (
-                        <div class="relative animate-on-scroll" data-animation="fade-in-left" style={`animation-delay: ${(index + Math.ceil(experience.length/2)) * 0.15}s;`} key={job.id}>
+                        <div class="relative animate-fade-in-left" style={`animation-delay: ${index * 0.15}s;`} key={job.id}>
                             <div class="absolute -left-[calc(0.75rem+1px)] top-1 w-6 h-6 bg-white dark:bg-gray-900 border-2 border-indigo-500 rounded-full"></div>
 
                             <div class="ml-4">
@@ -145,33 +164,44 @@ const lastName = nameParts.slice(1).join(' ');
     </Section>
 
     <Section id="projects" title="My Projects" className="bg-gray-50 dark:bg-gray-800/50">
+        <div class="text-center mb-12 animate-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Projects
+            </h2>
+            <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {projects.map((project, index) => (
-                <div class="animate-on-scroll" data-animation="fade-in-up" style={`animation-delay: ${index * 0.1}s;`} key={project.id}>
+                <div class="animate-fade-in-up" style={`animation-delay: ${index * 0.1}s;`} key={project.id}>
                     <ProjectCard {...project} />
                 </div>
             ))}
         </div>
-        <p class="text-center mt-12 text-gray-600 dark:text-gray-400 animate-on-scroll" data-animation="fade-in">
+        <p class="text-center mt-12 text-gray-600 dark:text-gray-400 animate-fade-in">
             More projects available on my <a href={personalInfo.githubUrl} target="_blank" rel="noopener noreferrer" class="font-semibold hover:underline">GitHub</a>.
         </p>
     </Section>
 
-
     <Section id="contact" title="Get In Touch" className="bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-900/30 dark:to-gray-900">
+        <div class="text-center mb-12 animate-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Contact
+            </h2>
+            <div class="w-24 h-1 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+        </div>
         <div class="max-w-xl mx-auto text-center">
-            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 animate-on-scroll" data-animation="fade-in">
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 animate-fade-in">
                 I'm currently open to new opportunities, research collaborations, and interesting projects. Feel free to reach out!
             </p>
             <a
                 href={`mailto:${personalInfo.email}`}
-                class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out animate-on-scroll"
-                data-animation="fade-in-scale"
+                class="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out animate-fade-in-scale"
                 style="animation-delay: 0.2s;"
             >
                 Send Me an Email
             </a>
-            <div class="mt-8 text-gray-600 dark:text-gray-400 animate-on-scroll" data-animation="fade-in" style="animation-delay: 0.4s;">
+            <div class="mt-8 text-gray-600 dark:text-gray-400 animate-fade-in" style="animation-delay: 0.4s;">
                 <p>You can also find me on:</p>
                 <div class="mt-4 flex justify-center space-x-6">
                      {personalInfo.linkedinUrl && personalInfo.linkedinUrl !== "[Your LinkedIn Link]" && (

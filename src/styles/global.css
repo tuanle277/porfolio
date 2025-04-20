@@ -21,7 +21,7 @@
 
   @keyframes fadeInUp {
     from {
-      opacity: 0.6;
+      opacity: 0;
       transform: translateY(20px);
     }
     to {
@@ -96,7 +96,7 @@
 
   /* Base style for elements that will be animated on scroll */
   .animate-on-scroll {
-    opacity: 0; /* Start hidden */
+    opacity: 0;
     /* Transition properties are handled by animation definitions */
   }
 
