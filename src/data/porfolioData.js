@@ -30,6 +30,17 @@ export const projects = [
     liveUrl: "#",
     repoUrl: "#",
     imageUrl: "https://placehold.co/600x400/a3bffa/ffffff?text=Meet+In+Middle",
+    imagesUrl: [
+      "/images/MITM/screenshot_1.PNG",
+      "/images/MITM/screenshot_2.PNG",
+      "/images/MITM/screenshot_3.PNG",
+      "/images/MITM/screenshot_4.PNG",
+      "/images/MITM/screenshot_5.PNG",
+      "/images/MITM/screenshot_6.PNG",
+      "/images/MITM/screenshot_7.PNG",
+      "/images/MITM/screenshot_8.PNG",
+      "/images/MITM/screenshot_9.PNG",
+    ],
     date: "Jan 2025 – Present",
   },
   {

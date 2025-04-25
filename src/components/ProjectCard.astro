@@ -6,6 +6,7 @@ interface Props {
     title: string;
     description: string;
     imageUrl?: string; // Optional image URL
+    imagesUrl?: string[]; // Optional array of image URLs
     imageAlt?: string; // Alt text for image
     tags?: string[];   // Tech tags (e.g., ['React', 'Node.js'])
     liveUrl?: string;  // Link to live demo
@@ -18,20 +19,28 @@ const {
     imageUrl = 'https://placehold.co/600x400/e2e8f0/cbd5e0?text=Project+Image', // Placeholder image
     imageAlt = 'Project screenshot',
     tags = [],
+    imagesUrl = [],
     liveUrl,
     repoUrl
 } = Astro.props;
+
+// Use imageUrl as fallback if imagesUrl is empty
+const displayImages = imagesUrl.length > 0 ? imagesUrl : [imageUrl];
 ---
 {/* Added group class for group-hover effects and enhanced transitions/shadows */}
 <div class="group bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl dark:hover:shadow-indigo-900/40 overflow-hidden transition-all duration-300 ease-out transform hover:-translate-y-2 border border-transparent hover:border-indigo-300 dark:hover:border-indigo-700 h-full flex flex-col">
-    <div class="overflow-hidden h-48"> {/* Fixed height container for image */}
-        <img
-            src={imageUrl}
-            alt={imageAlt}
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out"
-            onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/cbd5e0?text=Image+Error';"
-            loading="lazy" {/* Added lazy loading for images */}
-        />
+    <div class="overflow-hidden h-64 relative"> {/* Fixed height container for image */}
+        <div class="image-carousel w-full h-full flex transition-transform duration-500 ease-in-out">
+            {displayImages.map((img, index) => (
+                <img
+                    src={img}
+                    alt={`${imageAlt} ${index + 1}`}
+                    class="w-full h-full object-contain flex-shrink-0"
+                    onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/cbd5e0?text=Image+Error';"
+                    loading="lazy"
+                />
+            ))}
+        </div>
     </div>
     <div class="p-6 flex-grow flex flex-col"> {/* Using flex-grow to fill available space */}
         <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200">{title}</h3>
@@ -61,3 +70,27 @@ const {
         </div>
     </div>
 </div>
+
+<script>
+    // Initialize image carousels after the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        const carousels = document.querySelectorAll('.image-carousel');
+        
+        carousels.forEach(carousel => {
+            const images = carousel.querySelectorAll('img');
+            if (images.length <= 1) return; // Skip if only one image
+            
+            let currentIndex = 0;
+            const imageWidth = carousel.clientWidth;
+            
+            // Function to move to the next image
+            const moveToNextImage = () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+            };
+            
+            // Set interval to automatically move images every 5 seconds
+            setInterval(moveToNextImage, 5000);
+        });
+    });
+</script>

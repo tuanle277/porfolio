@@ -1,0 +1,43 @@
+# .github/workflows/ci.yml
+
+name: Astro CI
+
+on:
+  push:
+    branches: [main] # Or your primary branch
+  pull_request:
+    branches: [main] # Or your primary branch
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. Setup pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4 # Sets up pnpm
+        with:
+          version: 8 # Specify pnpm version if needed, or omit for latest
+          run_install: false # We'll run install manually later
+
+      # 2. Setup Node.js (Astro requires a recent version)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Use Node.js v20 or later (check Astro docs)
+          cache: "pnpm" # Enable caching for pnpm
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # Use --frozen-lockfile for CI
+
+      # 4. Run build command (ensure it builds successfully)
+      - name: Build project
+        run: pnpm build
+
+      # 5. Run tests (if you have them)
+      # The '--if-present' flag prevents errors if the script doesn't exist in package.json
+      - name: Run tests
+        run: pnpm test --if-present
