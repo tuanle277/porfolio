@@ -29,15 +29,11 @@ jobs:
           node-version: "20" # Use Node.js v20 or later (check Astro docs)
           cache: "pnpm" # Enable caching for pnpm
 
-      # 3. Install dependencies
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile # Use --frozen-lockfile for CI
-
-      # 4. Run build command (ensure it builds successfully)
+        # 4. Run build command (ensure it builds successfully)
       - name: Build project
         run: pnpm build
 
-      # 5. Run tests (if you have them)
+      # 4. Run tests (if you have them)
       # The '--if-present' flag prevents errors if the script doesn't exist in package.json
       - name: Run tests
         run: pnpm test --if-present
