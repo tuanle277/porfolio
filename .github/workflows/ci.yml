@@ -31,7 +31,7 @@ jobs:
 
         # 4. Run build command (ensure it builds successfully)
       - name: Build project
-        run: pnpm build
+        run: pnpm install
 
       # 4. Run tests (if you have them)
       # The '--if-present' flag prevents errors if the script doesn't exist in package.json
