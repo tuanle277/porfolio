@@ -42,26 +42,33 @@ export const projects = [
       "/images/MITM/screenshot_9.PNG",
     ],
     date: "Jan 2025 – Present",
+    githubUrl:
+      "https://github.com/ngethan/SP2025-Semester-Project/tree/dev/kevin",
   },
   {
-    id: "proj-board",
-    title: "Project Board Website (Independent)",
+    id: "application-manager",
+    title: "Application Manager (Independent)",
     description:
-      "Built a full-stack platform (React, Django, MongoDB) enabling project sharing for 500+ users. Implemented interactive task management and real-time chat/calendar tools using Socket.IO.",
+      "Developed a comprehensive application management system using React, Node.js, and MongoDB. Implemented user authentication, role-based access control, and integrated with external APIs for real-time data synchronization.",
     tags: [
-      "React",
-      "Django",
-      "MongoDB",
-      "Socket.IO",
-      "Full-Stack",
-      "Web App",
-      "Collaboration",
+      "Prompt Engineering",
+      "Python",
+      "Flask",
+      "Redis",
+      "RQ (Redis Queue)",
+      "Google Gemini API",
+      "Google Drive/Cloud/Sheets API",
+      "Authorization",
+      "Flask-RQ2",
+      "API Integration",
     ],
     liveUrl: "#",
-    repoUrl: "https://github.com/tuanle277",
-    imageUrl: "https://placehold.co/600x400/facc15/000000?text=Project+Board",
-    date: "Sep 2024 – Present",
+    repoUrl: "#",
+    imageUrl: "/images/app-screenshot.png",
+    date: "April 2025 – Present",
+    githubUrl: "https://github.com/tuanle277/application-manager",
   },
+
   {
     id: "proj-hypergraph",
     title: "Hypergraph Disease Prediction",
@@ -81,8 +88,9 @@ export const projects = [
     ],
     liveUrl: "#",
     repoUrl: "#",
-    imageUrl: "https://placehold.co/600x400/4ade80/ffffff?text=Hypergraph+ML",
+    imageUrl: "/images/patient_disease_screenshot.png",
     date: "July 2024 – Present", // Added date from CV
+    githubUrl: "https://github.com/HySonLab/GraphEHR/tree/temp",
   },
   // Added projects from CV/Resume
   {
@@ -103,17 +111,7 @@ export const projects = [
     repoUrl: "#",
     imageUrl: "https://placehold.co/600x400/fca5a5/ffffff?text=Firebase+App",
     date: "Sep 2024 – Present", // Added date from Resume
-  },
-  {
-    id: "proj-robotics",
-    title: "Robotics Firmware Pipeline",
-    description:
-      "Designed interaction between sensors, cameras, motors using ROS2. Developed Spatial Mapping API within a ROS2 node for dynamic coordination. Optimized real-time communication.",
-    tags: ["Robotics", "ROS2", "Firmware", "C++", "Python", "Spatial Mapping"],
-    liveUrl: "#",
-    repoUrl: "#",
-    imageUrl: "https://placehold.co/600x400/93c5fd/ffffff?text=ROS2+Pipeline",
-    date: "Sep 2024 – Present", // Added date from CV
+    githubUrl: "https://github.com/tuanle277",
   },
   {
     id: "proj-vietmed",
@@ -138,6 +136,28 @@ export const projects = [
     repoUrl: "#", // Link to project/paper if available
     imageUrl: "https://placehold.co/600x400/d8b4fe/ffffff?text=Vietmed+NLP",
     date: "Oct 2023 – Jan 2024", // Added date from CV
+    githubUrl: "https://github.com/tuanle277/Vietmed-NLP-Benchmark-2024",
+  },
+  {
+    id: "proj-board",
+    title: "Project Board Website (Independent)",
+    description:
+      "Built a full-stack platform (React, Django, MongoDB) enabling project sharing for 500+ users. Implemented interactive task management and real-time chat/calendar tools using Socket.IO.",
+    tags: [
+      "React",
+      "Django",
+      "MongoDB",
+      "Socket.IO",
+      "Full-Stack",
+      "Web App",
+      "Collaboration",
+    ],
+    liveUrl: "#",
+    repoUrl: "https://github.com/tuanle277",
+    imageUrl: "/images/project-board-screenshot.png",
+    date: "Sep 2024 – Present",
+    githubUrl:
+      "https://github.com/cse330-fall-2024/creative-project-module7-499658-528551",
   },
 ];
 

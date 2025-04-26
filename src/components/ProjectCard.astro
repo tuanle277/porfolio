@@ -11,6 +11,7 @@ interface Props {
     tags?: string[];   // Tech tags (e.g., ['React', 'Node.js'])
     liveUrl?: string;  // Link to live demo
     repoUrl?: string;  // Link to code repository
+    githubUrl?: string; // Link to github repository
 }
 
 const {
@@ -21,7 +22,8 @@ const {
     tags = [],
     imagesUrl = [],
     liveUrl,
-    repoUrl
+    repoUrl,
+    githubUrl
 } = Astro.props;
 
 // Use imageUrl as fallback if imagesUrl is empty
@@ -62,8 +64,8 @@ const displayImages = imagesUrl.length > 0 ? imagesUrl : [imageUrl];
                     Live Demo
                 </a>
             )}
-            {repoUrl && (
-                <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105 shadow hover:shadow-md">
+            {githubUrl && (
+                <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105 shadow hover:shadow-md">
                     Code
                 </a>
             )}
