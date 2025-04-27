@@ -14,7 +14,7 @@ export const personalInfo = {
 export const projects = [
   {
     id: "proj-meet-middle",
-    title: "Meet in the Middle (Independent)",
+    title: "Meet in the Middle",
     description:
       "Designed dynamic backend (Supabase/PostgreSQL) for real-time data sync. Developed responsive React Native frontend (NativeWind). Integrated Google Maps API for trip planning and Supabase Realtime/Socket.IO for collaboration.",
     tags: [
@@ -47,9 +47,9 @@ export const projects = [
   },
   {
     id: "application-manager",
-    title: "Application Manager (Independent)",
+    title: "Application Manager",
     description:
-      "Developed a comprehensive application management system using React, Node.js, and MongoDB. Implemented user authentication, role-based access control, and integrated with external APIs for real-time data synchronization.",
+      "A full-stack Job Application Analyzer web application using Python and Flask, streamlining the job search process through automation and AI. This application securely authenticates users via Google OAuth 2.0 to access Google Workspace APIs (Gmail, Sheets, Drive), automatically scanning emails and leveraging the Google Gemini API for intelligent extraction of application details (status, company, title). It features persistent user profile management with resume parsing capabilities using SQLAlchemy (SQLite), integrates personalized job recommendations fetched via the SerpApi (Google Jobs API), and utilizes RQ and Redis for efficient, asynchronous background task processing, ensuring a responsive user experience delivered through an HTML/CSS/JavaScript frontend styled with Tailwind CSS.",
     tags: [
       "Prompt Engineering",
       "Python",
@@ -60,11 +60,19 @@ export const projects = [
       "Google Drive/Cloud/Sheets API",
       "Authorization",
       "Flask-RQ2",
-      "API Integration",
+      "Google Jobs API",
+      "Pagination",
     ],
     liveUrl: "#",
     repoUrl: "#",
     imageUrl: "/images/app-screenshot.png",
+    imagesUrl: [
+      "/images/application-manager/screenshot_1.png",
+      "/images/application-manager/screenshot_2.png",
+      "/images/application-manager/screenshot_3.png",
+      "/images/application-manager/screenshot_4.png",
+      "/images/application-manager/screenshot_5.png",
+    ],
     date: "April 2025 – Present",
     githubUrl: "https://github.com/tuanle277/application-manager",
   },
@@ -89,6 +97,7 @@ export const projects = [
     liveUrl: "#",
     repoUrl: "#",
     imageUrl: "/images/patient_disease_screenshot.png",
+
     date: "July 2024 – Present", // Added date from CV
     githubUrl: "https://github.com/HySonLab/GraphEHR/tree/temp",
   },
@@ -140,7 +149,7 @@ export const projects = [
   },
   {
     id: "proj-board",
-    title: "Project Board Website (Independent)",
+    title: "Project Board Website",
     description:
       "Built a full-stack platform (React, Django, MongoDB) enabling project sharing for 500+ users. Implemented interactive task management and real-time chat/calendar tools using Socket.IO.",
     tags: [
