@@ -229,9 +229,9 @@ export const skills = {
 // Expanded experience section
 export const experience = [
   {
-    id: "DA-ussa",
+    id: "DA-usaa",
     role: "Data Analyst",
-    company: "United States Secret Service",
+    company: "United Services Automobile Association (USAA)",
     duration: "Incoming May 2025 – Aug 2025",
     description:
       "Will analyze large datasets to identify security trends and patterns. Develop data visualization dashboards for intelligence reporting. Support investigations through data mining and statistical analysis. Collaborate with cybersecurity teams on threat assessment models using SQL, Python, and advanced analytics tools.",
